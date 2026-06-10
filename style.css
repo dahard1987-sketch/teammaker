@@ -1,0 +1,303 @@
+/* ============================================================
+   Team Maker — Figma-style monochrome + pastel color blocks
+   Font: Pretendard (Korean-compatible, fine variable weights)
+   ============================================================ */
+
+:root {
+  /* Colors */
+  --primary: #000000;
+  --on-primary: #ffffff;
+  --ink: #000000;
+  --canvas: #ffffff;
+  --hairline: #e6e6e6;
+  --hairline-soft: #f1f1f1;
+  --surface-soft: #f7f7f5;
+  --accent-magenta: #b81570; /* CANB brand magenta, used as single-shot accent */
+
+  /* Group surfaces — muted, low-saturation neutrals that read as one family */
+  --g-1: #f3f1ec; /* warm stone */
+  --g-2: #eef0ec; /* soft sage */
+  --g-3: #edeef1; /* cool mist */
+  --g-4: #f1eef0; /* pale mauve */
+  --g-5: #f0eee8; /* sand */
+  --g-6: #ebeef0; /* slate haze */
+
+  /* Radius */
+  --r-md: 8px;
+  --r-lg: 24px;
+  --r-xl: 32px;
+  --r-pill: 50px;
+  --r-full: 9999px;
+
+  /* Spacing */
+  --s-xs: 8px;
+  --s-sm: 12px;
+  --s-md: 16px;
+  --s-lg: 24px;
+  --s-xl: 32px;
+  --s-xxl: 48px;
+  --s-section: 96px;
+
+  /* Type */
+  --sans: "Noto Sans KR", system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --mono: "JetBrains Mono", "SFMono-Regular", "Consolas", "Liberation Mono", Menlo, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+
+body {
+  font-family: var(--sans);
+  font-feature-settings: "kern" 1;
+  color: var(--ink);
+  background: var(--canvas);
+  min-height: 100vh;
+}
+
+/* ---------- Typographic tokens ---------- */
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.54px;
+  color: var(--ink);
+}
+.caption {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+.display-xl {
+  font-size: clamp(40px, 8vw, 86px);
+  font-weight: 350;
+  line-height: 1.0;
+  letter-spacing: -1.72px;
+}
+
+/* ---------- Top nav ---------- */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  height: 64px;
+  background: var(--canvas);
+  border-bottom: 1px solid var(--hairline);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(var(--s-lg), 4vw, var(--s-xxl));
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+.brand img { height: 34px; width: auto; display: block; }
+.brand-fallback {
+  display: none;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.4px;
+  color: var(--accent-magenta);
+}
+.nav-eyebrow { color: #8a8a8a; }
+
+/* ---------- Container ---------- */
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: clamp(var(--s-xxl), 7vw, var(--s-section)) clamp(var(--s-lg), 4vw, var(--s-xxl)) var(--s-section);
+}
+
+/* ---------- Hero ---------- */
+.hero { margin-bottom: var(--s-xxl); }
+.hero .eyebrow { color: #8a8a8a; margin-bottom: var(--s-md); }
+.display-xl { margin-bottom: var(--s-lg); }
+.hero-lead {
+  font-size: 20px;
+  font-weight: 330;
+  line-height: 1.4;
+  letter-spacing: -0.14px;
+  color: var(--ink);
+  max-width: 46ch;
+}
+.teacher-inline {
+  font-weight: 700;
+  color: var(--accent-magenta);
+}
+
+/* ---------- Input card ---------- */
+.card {
+  background: var(--canvas);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-lg);
+  padding: clamp(var(--s-lg), 4vw, var(--s-xl));
+}
+.label {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: var(--s-sm);
+}
+.names-input {
+  width: 100%;
+  resize: none;
+  height: 200px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-md);
+  padding: 14px 16px;
+  font-family: var(--sans);
+  font-size: 18px;
+  font-weight: 320;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--canvas);
+  outline: none;
+  transition: height 0.3s ease, border-color 0.15s, box-shadow 0.15s;
+}
+/* When results are shown, collapse the input so results sit near the top */
+body.has-result .names-input { height: 72px; }
+.names-input::placeholder { color: #b3b3b3; }
+.names-input:focus {
+  border-color: var(--ink);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+}
+
+.meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-md);
+  margin-top: var(--s-md);
+}
+.count {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.4px;
+  color: #8a8a8a;
+}
+.actions { display: flex; gap: var(--s-sm); }
+
+/* ---------- Buttons (pill only) ---------- */
+.btn {
+  font-family: var(--sans);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.1px;
+  border: none;
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  min-height: 44px;
+  padding: 10px 24px;
+  transition: transform 0.08s ease, background 0.15s ease, opacity 0.15s ease;
+}
+.btn:active { transform: scale(0.97); }
+.btn-primary { background: var(--primary); color: var(--on-primary); }
+.btn-primary:hover { opacity: 0.86; }
+.btn-secondary {
+  background: var(--canvas);
+  color: var(--ink);
+  border: 1px solid var(--hairline);
+}
+.btn-secondary:hover { background: var(--surface-soft); }
+
+/* ---------- Result ---------- */
+.result { margin-top: var(--s-xl); }
+.result:empty { margin-top: 0; }
+
+.result-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--s-lg);
+}
+.result-header h2 {
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 350;
+  line-height: 1.1;
+  letter-spacing: -0.6px;
+}
+.result-header .summary {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.4px;
+  color: #8a8a8a;
+}
+
+.teams-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--s-md);
+}
+
+/* Group cards — muted surface is the depth device (no shadow) */
+.team-card {
+  border-radius: var(--r-lg);
+  padding: var(--s-lg);
+  background: var(--g-1);
+  animation: pop 0.32s ease both;
+}
+.team-card.g1 { background: var(--g-1); }
+.team-card.g2 { background: var(--g-2); }
+.team-card.g3 { background: var(--g-3); }
+.team-card.g4 { background: var(--g-4); }
+.team-card.g5 { background: var(--g-5); }
+.team-card.g6 { background: var(--g-6); }
+
+@keyframes pop {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.member {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 0;
+  text-align: center;
+}
+.member + .member { border-top: 1px solid rgba(0, 0, 0, 0.08); }
+.member-name {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+}
+
+/* Teacher emphasis */
+.member.is-teacher .member-name {
+  font-weight: 700;
+  color: var(--accent-magenta);
+}
+
+/* Empty / hint state */
+.empty {
+  border: 1px dashed var(--hairline);
+  border-radius: var(--r-lg);
+  padding: var(--s-xxl);
+  text-align: center;
+  color: #8a8a8a;
+  font-size: 18px;
+  font-weight: 330;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  border-top: 1px solid var(--hairline);
+  padding: var(--s-xxl) clamp(var(--s-lg), 4vw, var(--s-xxl));
+  color: #8a8a8a;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 560px) {
+  .meta-row { flex-direction: column; align-items: stretch; }
+  .actions { justify-content: flex-end; }
+  .btn { flex: 1; }
+  .display-xl { letter-spacing: -1px; }
+}

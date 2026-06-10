@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>팀 메이커</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="top-nav">
+    <a class="brand" href="#" aria-label="CANB English">
+      <img src="logo.png" alt="CANB English"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='inline';" />
+      <span class="brand-fallback">CANB English</span>
+    </a>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <textarea
+        id="names"
+        class="names-input"
+        placeholder="이름을 붙여넣으세요"
+        rows="8"
+      ></textarea>
+
+      <div class="meta-row">
+        <span id="count" class="count">0명</span>
+        <div class="actions">
+          <button id="clearBtn" class="btn btn-secondary" type="button">지우기</button>
+          <button id="makeBtn" class="btn btn-primary" type="button">팀 짜기</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="result" class="result" aria-live="polite"></section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
